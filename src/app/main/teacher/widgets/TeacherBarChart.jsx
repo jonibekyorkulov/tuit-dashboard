@@ -59,6 +59,7 @@ function TeacherBarChart() {
                     dataset={dataset}
                     xAxis={[{ scaleType: 'band', dataKey: 'month' }]}
                     borderRadius={10}
+                    barLabel="value"
                     series={[
                         { dataKey: 'london', label: 'Axborot xavfsziligi', valueFormatter },
                         { dataKey: 'paris', label: 'Kriptologiya', valueFormatter },
