@@ -45,7 +45,7 @@ const navigationConfig = [
 		title: 'Teacher',
 		translate: 'Teacher',
 		type: 'item',
-		icon: 'heroicons-outline:star',
+		icon: 'heroicons-outline:user-circle',
 		url: 'teacher'
 	}
 ];
