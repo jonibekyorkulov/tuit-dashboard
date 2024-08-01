@@ -10,6 +10,7 @@ import GanderStudent from './widgets/GanderStudent';
 import PlaceStudent from './widgets/PlaceStudent';
 import BudgetWidget from './widgets/BudgetWidget';
 import BudgetWidgetRight from './widgets/BudgetWidgetRight';
+import VerticalUzbekistanBar from './widgets/VerticalUzbekistanBar';
 
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
@@ -54,11 +55,11 @@ function Student() {
 						</motion.div>
 					</div>
 					<div className="sm:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-32 w-full p-24">
-						<motion.div variants={item} className="col-span-1">
-							<GanderStudent />
-						</motion.div>
 						<motion.div variants={item} className="col-span-1 sm:col-span-2 lg:col-span-2">
 							<PlaceStudent />
+						</motion.div>
+						<motion.div variants={item} className="col-span-1">
+							<GanderStudent />
 						</motion.div>
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-24 w-full min-w-0 p-24">
@@ -83,7 +84,17 @@ function Student() {
 							<BudgetWidgetRight />
 						</motion.div>
 					</div>
-					
+					<div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-24 w-full min-w-0 p-24">
+						<motion.div variants={item}>
+							<VerticalUzbekistanBar />
+						</motion.div>
+					</div>
+					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-24 w-full min-w-0 p-24">
+						<motion.div variants={item}>
+							
+						</motion.div>
+						
+					</div>
 				</div>
 			}
 		/>

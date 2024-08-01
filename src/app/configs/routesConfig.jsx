@@ -9,8 +9,10 @@ import Error404Page from '../main/404/Error404Page';
 import ExampleConfig from '../main/example/ExampleConfig';
 import StudentConfig from '../main/student/StudentConfig';
 import TeacherConfig from '../main/teacher/TeacherConfig';
+import StudentTalanConfig from '../main/talantstudent/StudentTalanConfig';
+import StudentCartConfig from '../main/studentcart/StudentCartConfig';
 
-const routeConfigs = [ExampleConfig, SignOutConfig, SignInConfig, SignUpConfig, StudentConfig, TeacherConfig];
+const routeConfigs = [ExampleConfig, SignOutConfig, SignInConfig, SignUpConfig, StudentConfig, TeacherConfig, StudentTalanConfig, StudentCartConfig];
 /**
  * The routes of the application.
  */

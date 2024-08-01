@@ -1,10 +1,11 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
+import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
-import { motion } from 'framer-motion';
-import TeacherStatistic from './widgets/TeacherStatistic';
-import TeacherDegree from './widgets/TeacherDegree';
-import TeacherBarChart from './widgets/TeacherBarChart';
+import TalantStudent from './widgets/TalantStudent';
+import VerticalBarchartTalant from './widgets/VerticalBarchartTalant';
+import TotalStudentWork from './widgets/TotalStudentWork';
+import TotalStudentWorkCompany from './widgets/TotalStudentWorkCompany';
 
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
@@ -18,14 +19,15 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
 	'& .FusePageSimple-sidebarHeader': {},
 	'& .FusePageSimple-sidebarContent': {}
 }));
+
 const item = {
 	hidden: { opacity: 0, y: 20 },
 	show: { opacity: 1, y: 0 }
 };
 
 
-function Teacher() {
-	const { t } = useTranslation('teacherPage');
+function StudentTalant() {
+	const { t } = useTranslation('studentTalantPage');
 	return (
 		<Root
 			header={
@@ -35,18 +37,22 @@ function Teacher() {
 			}
 			content={
 				<div className="p-24">
-					<div className="sm:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-32 w-full p-24">
-						<motion.div variants={item} className="col-span-1">
-							<TeacherStatistic />
+					<div className="sm:col-span-3 grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-32 w-full p-24">
+						<motion.div variants={item}>
+							<TalantStudent />
 						</motion.div>
-						<motion.div variants={item} className="col-span-1 sm:col-span-2 lg:col-span-2">
-							<TeacherDegree />
+					</div>
+					<div className="sm:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-32 w-full p-24">
+						<motion.div variants={item}>
+							<VerticalBarchartTalant />
 						</motion.div>
-
+						<motion.div variants={item}>
+							<TotalStudentWork />
+						</motion.div>
 					</div>
 					<div className="sm:col-span-3 grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-32 w-full p-24">
 						<motion.div variants={item}>
-							<TeacherBarChart />
+							<TotalStudentWorkCompany />
 						</motion.div>
 					</div>
 				</div>
@@ -55,4 +61,4 @@ function Teacher() {
 	);
 }
 
-export default Teacher;
+export default StudentTalant;

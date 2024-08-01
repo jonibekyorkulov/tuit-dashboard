@@ -25,10 +25,10 @@ const navigationConfig = [
 				end: true
 			},
 			{
-				id: 'student-list',
-				title: 'Student list',
+				id: 'student-talante',
+				title: 'Iqtidorli talabalar',
 				type: 'item',
-				url: 'student/list'
+				url: 'student/talante'
 			}
 		]
 	},
