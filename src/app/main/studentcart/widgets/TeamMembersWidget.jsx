@@ -3,7 +3,6 @@ import { memo } from 'react';
 import Paper from '@mui/material/Paper';
 import { motion } from 'framer-motion';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
-import FuseLoading from '@fuse/core/FuseLoading';
 
 /**
  * The TeamMembersWidget widget.

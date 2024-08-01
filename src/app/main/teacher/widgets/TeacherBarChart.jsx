@@ -1,75 +1,64 @@
-import { Paper, Typography } from "@mui/material";
-import { useTheme } from '@mui/material/styles';
-import { memo } from "react";
+import * as React from 'react';
+import { memo } from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
-import { axisClasses } from '@mui/x-charts/ChartsAxis';
+import Stack from '@mui/material/Stack'
+import { Paper, Typography } from '@mui/material';
 
-const chartSetting = {
-    width: 1200,
+const dataset = [
+    [16, 9, 'ATDT'],
+    [15, 1, 'TAD'],
+    [13, 7, 'A va MM'],
+    [21, 1, 'Oliy matematika'],
+].map(([high, low, order]) => ({
+    high,
+    low,
+    order,
+}));
+const chartSettingsH = {
+    dataset,
     height: 300,
-    sx: {
-      [`.${axisClasses.left} .${axisClasses.label}`]: {
-        transform: 'translate(-20px, 0)',
-      },
-    },
+    yAxis: [{ scaleType: 'band', dataKey: 'order' }],
     slotProps: {
         legend: {
-          direction: 'row',
-          position: { vertical: 'bottom', horizontal: 'middle' },
-          padding: -5,
+            direction: 'row',
+            position: { vertical: 'bottom', horizontal: 'middle' },
+            padding: -5,
         },
-      },
-  };
-  
-const valueFormatter = (value) => `${value}%`;
-const dataset = [
-    {
-      london: 40,
-      paris: 42,
-      newYork: 14,
-      month: '2021',
     },
-    {
-      london: 47,
-      paris: 42,
-      newYork: 14,
-      month: '2022',
-    },
-    {
-      london: 76,
-      paris: 46,
-      newYork: 14,
-      month: '2023',
-    }
-  ];
-  
+};
+const chartSettingsV = {
+    ...chartSettingsH,
+    xAxis: [{ scaleType: 'band', dataKey: 'order' }],
+    yAxis: undefined,
+};
+
 
 function TeacherBarChart() {
-    const theme = useTheme();
+    const [layout, setLayout] = React.useState('vertical');
+    const [radius, setRadius] = React.useState(10);
+
     return (
         <Paper className="flex flex-col flex-auto shadow rounded-2xl overflow-hidden p-24">
             <div className="flex flex-col sm:flex-row items-center justify-between">
                 <Typography className="text-lg font-medium tracking-tight leading-6 truncate center p-24">
-                    Fakultet professor-o'qituvchilarining ilmiy salohiyati
+                    To'lov Shakli taqsimoti
                 </Typography>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '0 24px' }}>
-
+            <Stack direction="column" spacing={1} sx={{ width: '100%', maxWidth: 1600 }}>
                 <BarChart
-                    dataset={dataset}
-                    xAxis={[{ scaleType: 'band', dataKey: 'month' }]}
-                    borderRadius={10}
-                    barLabel="value"
                     series={[
-                        { dataKey: 'london', label: 'Axborot xavfsziligi', valueFormatter },
-                        { dataKey: 'paris', label: 'Kriptologiya', valueFormatter },
-                        { dataKey: 'newYork', label: 'Kiberxavfsizlik va kriminalistika', valueFormatter },
+                        { dataKey: 'high', label: 'Asosiy', layout, stack: 'stack' },
+                        { dataKey: 'low', label: "O'rindosh", layout, stack: 'stack' },
+                        
                     ]}
-                    {...chartSetting}
+                    {...(layout === 'vertical' ? chartSettingsV : chartSettingsH)}
+                    borderRadius={radius}
+                    barLabel="value"
                 />
-            </div>
-        </Paper>
-    )
-}
-export default memo(TeacherBarChart);
 
+            </Stack>
+        </Paper>
+    );
+}
+
+export default memo(TeacherBarChart);
